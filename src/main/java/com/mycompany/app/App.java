@@ -1,19 +1,21 @@
 package com.mycompany.app;
 
+import java.util.List;
+
 /**
  * Hello world!
  */
 public class App {
 
-    private static final String MESSAGE = "Hello World!";
-
     public App() {}
 
     public static void main(String[] args) {
-        System.out.println(MESSAGE);
+        List<String> strings = List.of("A", "B", "C");
+        strings.forEach(App::printMessage); // <- This does not show up in outgoing calls 
+        strings.forEach(s -> printMessage(s)); // <- This shows up in outgoing calls
     }
 
-    public String getMessage() {
-        return MESSAGE;
+    public static void printMessage(String message) {
+        System.out.println(message);
     }
 }
